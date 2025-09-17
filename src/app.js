@@ -29,16 +29,21 @@ const app = express();
 // Middlewares
 app.use(cors({
   origin: process.env.CLIENT_URL, 
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true,
 }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
+
 // --- YAHAN PAR HAI FINAL CORRECTION ---
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+
 
 // 👇 Sirf yeh ek line rakhein. Yeh 'src' se ek level upar jakar 'public' folder ko serve karegi.
 app.use(express.static(path.join(__dirname, '../public')));
